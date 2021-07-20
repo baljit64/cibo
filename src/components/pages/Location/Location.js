@@ -8,8 +8,6 @@ import './location.css';
 
 const API_KEY = "Your api key here";
 
-// AIzaSyCjVbKQ_QzEMN1gALTx7XAoI_tVFUSrUpg
-
 export default class Location extends Component {
   constructor(props) {
     super(props)
