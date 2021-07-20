@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  vertical-align: middle;
+}
+
+.n-logo {
+  height: 50px;
+  object-fit: contain;
+
+}
+
+.nav-logo {
+  padding-right: 50px;
+}
+
+.nav-left,
+.nav-right {
+  height: inherit;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+}
+
+.nav-right {
+  justify-content: space-evenly;
+}
+
+.nav-loaction {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  cursor: pointer;
+}
+
+.nav-loaction div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  padding: 0 10px;
+}
+
+.nav-loaction div:nth-child(2) h6 {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.nav-loaction div:nth-child(2) h5 {
+  font-size: 14px;
+  line-height: 6px;
+
+}
+
+.nav-location-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fdfdfd;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
+
+.nav-search {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  cursor: pointer;
+}
+
+.nav-profile {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  cursor: pointer;
+}
+
+.nav-profile .dp {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+}
