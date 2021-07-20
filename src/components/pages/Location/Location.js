@@ -5,8 +5,8 @@ import { GoogleComponent } from 'react-google-location'
 
 import Logo from '../../assets/logo.png'
 import './location.css';
-// const API_KEY = "AIzaSyCDadCi52Hu1KfM6lrSehadns_c-hqhhAQ";
-const API_KEY = "AIzaSyCjVbKQ_QzEMN1gALTx7XAoI_tVFUSrUpg";
+
+const API_KEY = "Your api key here";
 
 // AIzaSyCjVbKQ_QzEMN1gALTx7XAoI_tVFUSrUpg
 
