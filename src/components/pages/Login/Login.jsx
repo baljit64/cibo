@@ -18,6 +18,7 @@ export default function Login() {
   const [signup, setSignup] = useState(false);
   const [otp, setOtp] = useState(false);
   const [forget, setForget] = useState(false);
+
   const otpPage = (e) => {
     e.preventDefault();
     setOtp(true);
