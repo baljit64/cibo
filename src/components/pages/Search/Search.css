@@ -1,0 +1,32 @@
+.search-wrap {
+  min-height: 100vh;
+  margin-top: 70px;
+
+}
+
+.search-header {
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  text-transform: capitalize;
+}
+
+.search-header input {
+  padding-right: 30px;
+}
+
+.crossBtn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  /* font-size: 18px; */
+  color: red;
+}
+
+@media only screen and (max-width:767px) {
+  .search-wrap {
+    margin-bottom: 70px;
+  }
+}

@@ -1,15 +1,27 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar'
-import Foter from './Footer'
 import Offer from './Offers'
+import './Home.css'
 import Trending from './Trending'
+import Recent from './Recent'
+import Favorite from './HomeFavorites'
+import { useSelector } from 'react-redux'
+import Pickup from './Pickup'
+
 export default function Home() {
+  const mode = useSelector(data => data.getLocation.mode)
+
   return (
-    <div>
-      <Navbar />
-      <Offer />
-      <Trending />
-      <Foter />
-    </div>
+    <>
+      {mode ?
+        <Pickup />
+        :
+        <>
+          <Offer />
+          <Trending />
+          <Favorite />
+          <Recent />
+        </>
+      }
+    </>
   )
 }

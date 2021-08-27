@@ -1,0 +1,371 @@
+.login-wrap {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+
+}
+
+.login-inner-Wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fdfdfd;
+  min-height: 100vh;
+}
+
+/* login left side */
+.login-left {
+  width: 50%;
+  min-height: 100vh;
+
+  /* height: 100vh; */
+  position: relative;
+  background: url(../../../assets/FOOD.jpg);
+  background-size: cover;
+}
+
+.login-page-content {
+  position: relative;
+  z-index: 4;
+  width: 70%;
+  height: 100%;
+  bottom: 10%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+.login-page-content>span {
+  color: #FFF;
+  text-align: center;
+  font-family: 'Poppins',
+    sans-serif;
+  font-weight: 600;
+  font-size: 35px;
+}
+
+.login-page-content>span>span {
+  color: #FA4A0C;
+  margin-left: 12px;
+}
+
+.login-page-content p {
+  color: #fff;
+  line-height: 30px;
+}
+
+.login-left:after {
+  content: '';
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.507),
+      rgba(0, 0, 0, 0.52));
+}
+
+.img-content {
+  min-width: max-content;
+}
+
+/* login right side */
+.login-right {
+  width: 50%;
+  /* min-height: 100vh; */
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  background: #FDFDFD;
+  height: inherit;
+  justify-content: center;
+
+  /* padding-top: 30px; */
+}
+
+.login-form {
+  display: flex;
+
+  flex-direction: column;
+  min-height: 80vh;
+  margin: auto;
+
+}
+
+.login-page-heading {
+  text-align: left;
+  width: 55%;
+  margin: auto;
+}
+
+.otp-form {
+  height: 88vh;
+}
+
+.login-form-back-btn {
+  position: relative;
+  top: 0;
+}
+
+.login-heading h4 {
+  color: #FA4A0C;
+  font-family: 'poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  line-height: 4rem;
+  font-size: 25px;
+}
+
+.login-logo {
+
+  height: 50px;
+}
+
+.Login-create-account-links .googleSignbtn {
+  height: 45px;
+  width: 45px;
+  color: rgba(0, 0, 0, 789);
+  border-radius: 50%;
+  background: #FDFDFD;
+  margin: 0 10px;
+  box-shadow: 1px 1px 6px #a1a1a757;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+}
+
+.Login-create-account-links span:hover {
+  transform: translateY(-5px);
+  transition: 0.2s ease-in-out;
+}
+
+.login-input-box {
+  width: 45%;
+}
+
+.login-input-box label {
+  position: relative;
+  display: flex;
+  vertical-align: middle;
+}
+
+.login-input-box label input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.login-input-box input::-webkit-outer-spin-button,
+.login-input-box input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+.login-fileds {
+  border: none;
+  height: 40px;
+  border: 1px solid #DEDEDE;
+  padding-left: 40px;
+  user-select: none;
+  outline: none;
+  margin-bottom: 15px;
+  background: #FDFDFD;
+  color: rgba(0, 0, 0, 0.671);
+  border-radius: 5px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  place-items: center;
+}
+
+.login-input-box label {
+  position: relative;
+}
+
+.login-input-box label span {
+  height: 40px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+
+}
+
+.field-icons {
+  height: inherit;
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+  top: 50%;
+  padding-left: 15px;
+
+}
+
+.required {
+  font-size: 14px;
+  font-weight: 600px;
+  transform: translateY(-5px);
+  padding-left: 5px;
+}
+
+.foregtpass a {
+  font-size: 12px;
+  cursor: pointer;
+  text-align: right;
+  color: rgba(33, 159, 218, 0.959);
+  text-decoration: none;
+  float: right;
+}
+
+.googleSignbtn {
+  border: none;
+  background: #FFF;
+  text-align: center;
+
+}
+
+
+.login-btn {
+  margin: 10px auto 15px;
+  padding: 8px 15px;
+  color: #fff;
+  background: #FA4A0C;
+  width: 50%;
+  border: none;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 17px;
+  transition: 0.2s ease-in-out;
+}
+
+.signup-next-btn {
+  margin: 10px auto 15px;
+  padding: 5px 15px;
+  color: #fff;
+  background: #FA4A0C;
+  width: 50%;
+  border: none;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 17px;
+  transition: all 0.5s ease;
+  line-height: 30px;
+  justify-content: center;
+
+}
+
+.signup-next-btn .icon {
+  font-size: 22px;
+  line-height: 30px;
+
+}
+
+.signup-next-btn:hover {
+  box-shadow: 1px 1px 5px #000;
+}
+
+.signup-next-btn:hover .icon {
+
+  /* padding-left: 15px; */
+  transform: translate(15px);
+  transition: 0.2s ease-in-out 0.1s;
+}
+
+span.login-btn:hover {
+  filter: brightness(1.3);
+  box-shadow: 1px 1px 5px #000;
+}
+
+.dont-have-account {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.651);
+  text-align: center;
+}
+
+.dont-have-account a {
+  color: #FA4A0C;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.otp-back-btn {
+  height: 45px;
+  width: 45px;
+  color: rgba(0, 0, 0, 789);
+  border-radius: 50%;
+  margin: 0 10px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.otp-back-btn:hover {
+  box-shadow: 1px 1px 6px #a1a1a757;
+}
+
+@media only screen and (max-width:991px) {
+  .login-input-box {
+    width: 80%;
+  }
+
+  .forget-p-heading {
+    width: 80% !important;
+  }
+}
+
+@media only screen and (max-width:767px) {
+  .login-right {
+    width: 100%;
+    justify-content: flex-start;
+    /* padding-top: 100px; */
+  }
+
+  .forget-p-heading {
+    width: 70% !important;
+  }
+
+  .login-input-box {
+    width: 70%;
+  }
+
+  .Login-create-account-links .googleSignbtn {
+    height: 50px;
+    width: 50px;
+  }
+}
+
+@media only screen and (max-width:575px) {
+  .login-input-box {
+    width: 92%;
+  }
+
+  .login-fileds {
+    height: 50px;
+
+  }
+
+  .login-input-box label span {
+    height: 50px;
+  }
+
+
+  .forget-p-heading {
+    width: 90% !important;
+  }
+}

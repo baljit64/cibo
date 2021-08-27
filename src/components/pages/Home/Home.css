@@ -1,0 +1,471 @@
+.offer-top-margin {
+  margin-top: 60px;
+}
+
+.offerImg {
+  height: 250px;
+  width: 100%;
+  margin: auto;
+  cursor: pointer;
+}
+
+.arrow-btn {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+}
+
+.noeffect {
+  user-select: none;
+  outline: none;
+}
+
+.left-arrow,
+.right-arrow {
+
+  border: none;
+  color: #000;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.411);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  z-index: 9;
+  background: #fff;
+
+}
+
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.671);
+  color: #fff;
+}
+
+.arrow:hover .arrowIcon {
+  color: #fff;
+}
+
+.left-arrow {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.right-arrow {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* trending card css */
+.trendingBg {
+  background: #F8F9FA;
+}
+
+.trendingImg {
+  height: 190px;
+}
+
+.trending-card {
+  /* height: 320px; */
+  cursor: pointer;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 1px 1px 5px #42424273;
+  position: relative;
+}
+
+.trending-heading {
+  font-family: 'poppins', sans-serif;
+  line-height: 24px;
+  font-size: 20px;
+  color: #000000;
+  font-weight: 400;
+}
+
+.trending-card:hover {
+  box-shadow: 0px 2px 5px #424242;
+}
+
+.card-content {
+  position: relative;
+
+}
+
+.recent-card .card-content {
+  width: 70%;
+}
+
+.trending-heart {
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  font-size: 22px;
+}
+
+.like {
+  color: #f00 !important;
+}
+
+
+
+.card-content h4 {
+  font-size: 16px;
+  line-height: 18px;
+  color: #000;
+}
+
+.trending-card-wrap {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-content span {
+  font-size: 13px;
+  line-height: 18px;
+  color: #424242;
+}
+
+.dot {
+  font-size: 18px;
+  font-weight: 600;
+
+}
+
+.star {
+  color: #F5CD25;
+  font-size: 14px;
+}
+
+.trending-viewall {
+  font-size: 13px;
+  line-height: 19px;
+  color: #E23744;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.recent-grid-wrap {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px 15px;
+}
+
+/* home favorites css */
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 25px 15px;
+}
+
+.by {
+  font-size: 12px;
+  font-weight: 400;
+  color: #9b9b9b;
+}
+
+.seller-name {
+  color: #000000;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.fav-price {
+  font-size: 15px;
+}
+
+.fav-card {
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 2px 2px 7px rgba(0 0 0 / 8%);
+  position: relative;
+  background: #fff;
+  box-shadow: 1px 1px 5px #42424273;
+}
+
+.fav-card:hover {
+  box-shadow: 2px 2px 7px #424242;
+}
+
+.fav-heart {
+  position: absolute;
+  right: 10%;
+  top: 5%;
+  font-size: 22px;
+  z-index: 9;
+  background: #fff;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  box-shadow: 1px 1px 5px #141414;
+  color: #A4A4A4;
+}
+
+.favImg {
+  height: 150px;
+  width: 100%;
+}
+
+/* recent page css */
+.recent-card {
+  position: relative;
+  width: 100%;
+  width: 100%;
+  box-shadow: 0 2px rgb(0 0 0 / 8%);
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.detail-page-link {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  z-index: 4;
+}
+
+.recent-card-img {
+  position: relative;
+  height: 100%;
+  width: 35%;
+}
+
+.recent-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.recent-km,
+.km {
+  padding: 3px 5px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  margin-right: 3px;
+
+}
+
+.recent-card-img img {
+  height: 100%;
+}
+
+/* pick up mode css */
+.pickup-wrap {
+  margin-top: 70px;
+  outline: none;
+}
+
+
+
+
+
+.seller-card-wrap {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  min-height: auto;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  box-shadow: 1px 1px 5px #42424273;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.seller-card-wrap .card-content {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 0px;
+}
+
+.seller-card-wrap .card-content p {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  margin-bottom: 0px;
+}
+
+.seller-card-wrap a {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+}
+
+.seller-card-img {
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+  border: none;
+  /* border-radius: 6px; */
+  /* border-radius: 50%; */
+
+}
+
+.seller-card-img img {
+  height: 100%;
+  width: 100%;
+}
+
+.pick-up-star {
+  background: #f9f9f9;
+  border-radius: 4px;
+  color: rgb(36, 73, 0);
+  padding: 2px 4px;
+  text-transform: capitalize;
+}
+
+.pick-right-header {
+  font-weight: 500;
+}
+
+/* pick up mode ends here */
+
+@media only screen and (max-width:991px) {
+  .fav-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width:767px) {
+
+  .fav-grid,
+  .recent-grid-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recently-added {
+    margin-bottom: 70px;
+  }
+
+  .pickup-left {
+    width: 100%;
+    height: calc(60vh - 130px);
+  }
+
+  .pickup-section {
+    flex-direction: column !important;
+  }
+
+  .pickup-right {
+    width: 100%;
+    height: calc(40vh - 130px);
+  }
+
+  .pickup-wrap {
+    margin-bottom: 70px;
+  }
+}
+
+@media only screen and (max-width:600px) {
+  .offerImg {
+    height: 200px;
+    outline: none;
+  }
+}
+
+@media only screen and (max-width:420px) {
+
+  .fav-grid,
+  .recent-grid-wrap {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+  }
+
+  .fav-card {
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    border-radius: 0px;
+  }
+
+  .fav-img-box {
+    position: relative;
+    width: 35%;
+    height: 100%;
+  }
+
+  .fav-img-box img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .fav-card .card-content {
+    width: 65%;
+
+  }
+}
+
+@media only screen and (max-width:340px) {
+  .review-hide {
+    display: none;
+  }
+
+  .trending-card-wrap {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+}
+
+@media only screen and (min-width:768px) {
+
+  .offer-slider,
+  .recent-grid-wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .pickup-left {
+    width: 65%;
+    height: calc(100vh - 120px);
+
+  }
+
+  .pickup-right {
+    width: 35%;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+
+}
+
+@media only screen and (min-width:992px) {
+  .pickup-left {
+    width: 70%;
+    height: calc(100vh - 120px);
+
+  }
+
+  .pickup-right {
+    width: 30%;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+}
+
+@media only screen and (max-width:365px) {
+
+  .trending-heading {
+    font-size: 14px;
+  }
+
+  .trending-viewall {
+    font-size: 13px;
+  }
+
+  .card-content h4 {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+}

@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .location {
   display: flex;
   flex-direction: row;
@@ -21,13 +15,71 @@
   cursor: pointer;
 }
 
+.location-input {
+  max-width: 640px;
+}
+
 .location-input-inner {
   border: 1px solid #49484880;
   height: 50px;
   user-select: none;
   outline: none;
   padding-left: 20px;
+  position: relative;
+  border-radius: 6px;
+  padding-right: 120px;
 
+}
+
+.location-or {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.596);
+  font-weight: 400;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 640px;
+
+}
+
+.location-or span {
+
+  width: 100px;
+  height: 1px;
+
+  background: rgba(0, 0, 0, 0.411);
+
+}
+
+.location-or span:nth-child(1) {
+  margin-right: 10px;
+}
+
+.location-or span:nth-child(2) {
+  margin-left: 10px;
+}
+
+.autocomplete-dropdown-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+  height: auto;
+  max-height: 200px;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.location-wrap {
+  position: relative;
+}
+
+.suggestion-item-location {
+  padding-top: 5px;
+  padding-left: 10px;
 }
 
 .location-left {
@@ -42,7 +94,7 @@
   width: 90%;
   margin: auto;
   height: 90vh;
-  /* background: red; */
+  min-height: 480px;
 }
 
 .location-logo {
@@ -55,35 +107,49 @@
   font-family: 'poppins', sans-serif;
 }
 
-/* .location-input {
-  border: 1px solid #49484880;
+.getCurrentLocation {
+
   height: 50px;
   user-select: none;
   outline: none;
+  border-radius: 6px;
+  background: #FA4A0C;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  max-width: 640px;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+}
 
-} */
+.getCurrentLocation:hover,
+.find-loaction-btn:hover {
+  transition: 0.4s ease-in;
+  background: #fa4b0cd3;
+}
 
 .find-loaction-btn {
-  height: 49px;
+  height: 42px;
   color: #fff;
   background: #FA4A0C;
   border: none;
-  border-radius: 4px;
-  font-size: 26px;
+  border-radius: 6px;
+  font-size: 18px;
   font-weight: 400;
   font-family: 'poppins', sans-serif;
-  letter-spacing: 4px;
-  border: 1px solid #49484880;
-}
-
-.find-loaction-btn:hover {
-  box-shadow: #DEDEDE;
+  letter-spacing: 0.2px;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .location-right {
   width: 45%;
   height: 100%;
-  background: url(../../assets/Food.jpg) no-repeat;
+  background: url(../../assets/FOOD.jpg) no-repeat;
   background-size: cover;
   position: relative;
   z-index: 2;
@@ -107,4 +173,10 @@
     width: 100%;
   }
 
+  .autocomplete-dropdown-container {
+
+    box-shadow: 1px 2px 5px lightblue;
+    max-height: 270px;
+
+  }
 }

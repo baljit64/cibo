@@ -1,0 +1,31 @@
+.fav-grid-header {
+  margin-top: 90px;
+  font-size: 22px;
+  font-family: 'poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.fav-page-wrap {
+  /* min-height: 300px; */
+  min-height: calc(100vh - 346px);
+}
+
+.no-data-wrap {
+  min-height: 300px;
+  text-align: center;
+}
+
+.fav-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+}
+
+@media only screen and (max-width:330px) {
+
+  .trendingdistance {
+    font-size: 11px;
+  }
+}
