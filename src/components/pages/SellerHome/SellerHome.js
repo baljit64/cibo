@@ -188,7 +188,7 @@ function SellerHome() {
             </Button>
           </Modal.Footer>
         </Modal>
-        <div className='seller-home-header'>
+        <div className='seller-home-header seller-headr px-2 bg-light mb-2'>
           <Fade up>
             <div className='seller-left-section'>
               <div className='seller-img'>
@@ -219,7 +219,7 @@ function SellerHome() {
               <div className='d-flex flex-row align-items-center'><span className=''>Start time</span>
                 <input onChange={e => setStart(e.target.value)} value={start} type="time" id="appt" name="appt"
                   min="09:00" max="18:00" required /></div>
-              <div className='d-flex flex-row align-items-center'><span className=''>End time</span>
+              <div className='d-flex flex-row align-items-center py-1'><span className=''>End time</span>
                 <input onChange={e => setEnd(e.target.value)} value={end} type="time" id="appt" name="appt"
                   min="09:00" max="18:00" required /></div>
               <div className='d-flex mt-1 mb-3'><button onClick={updateSchedule} className='update-schedule-btn'>update Schedule</button></div>

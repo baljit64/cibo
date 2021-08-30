@@ -242,7 +242,6 @@ function Orders() {
                   </div>
                 </Fade>
               </div>
-
             )
             : <div className='order-empty-msg  d-flex justify-content-center align-items-center' >Your order list is Empty</div>}
       </div>

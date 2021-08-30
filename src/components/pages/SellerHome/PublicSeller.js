@@ -52,7 +52,7 @@ function SellerHome(props) {
     <div className='container'>
       <div className='seller-home-wrap'>
 
-        <div className='seller-home-header'>
+        <div className='seller-home-header bg-light px-2 pb-4 mb-2'>
           <Fade up>
             <div className='seller-left-section'>
               <div className='seller-img'>
