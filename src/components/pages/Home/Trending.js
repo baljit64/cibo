@@ -5,10 +5,10 @@ import * as AiIcons from 'react-icons/ai'
 import * as GoIcons from 'react-icons/go'
 import * as FaIcons from 'react-icons/fa'
 import API from '../../Services/Api';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../Loaders/Spinner'
 import { Link } from 'react-router-dom';
-
+import { SET_LIKE } from '../../store/Constants'
 function SampleNextArrow(props) {
   const { style, onClick } = props;
   return (
@@ -40,7 +40,7 @@ export default function Trending() {
   const location = useSelector(state => state.getLocation.Location)
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-
+  const dispatch = useDispatch()
   let headers = {
     Authorization: `Bearer ${token}`
   }
@@ -69,6 +69,7 @@ export default function Trending() {
   useEffect(() => {
     APICALL()
   }, [])
+
   const settings = {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -144,7 +145,7 @@ export default function Trending() {
                 <div key={i} className="trending-card-wrap noeffect">
                   <div className="trending-card">
                     <Link to={`/view/${item._id}`} className='detail-page-link' style={{ textDecoration: 'none' }}></Link>
-                    <div className={item.liked ? "trending-fav fav-heart like" : "trending-fav fav-heart"} ><AiIcons.AiFillHeart /></div>
+                    {/* <div onClick={() => Like(i, item.seller_id, item._id)} className={item.liked ? "trend-fav trending-fav fav-heart like" : "trend-fav trending-fav fav-heart"} ><AiIcons.AiFillHeart /></div> */}
                     <img className="trendingImg w-100" src={item.i_image} alt="food" />
                     <div className="card-content p-3">
                       <div className="d-flex flex-column">
@@ -173,7 +174,7 @@ export default function Trending() {
                   <div key={index} className="fav-card border-0">
                     <Link to={`/view/${item._id}`} className='detail-page-link' style={{ textDecoration: 'none' }}></Link>
                     <div className='fav-img-box'>
-                      <div className={item.liked ? " fav-heart like" : " fav-heart"}><AiIcons.AiFillHeart /></div>
+                      {/* <div onClick={() => Like(index, item.seller_id, item._id)} className={item.liked ? "trend-fav fav-heart like" : "trend-fav fav-heart"}><AiIcons.AiFillHeart /></div> */}
                       <img className="favImg" src={item.i_image} alt="food" />
                     </div>
                     <div className="card-content py-3 px-2">

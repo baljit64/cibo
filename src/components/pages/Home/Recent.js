@@ -11,14 +11,14 @@ export default function Recent() {
   const dispatch = useDispatch()
   const token = useSelector(state => state.authReducer.token)
   const location = useSelector(state => state.getLocation.Location)
-
+  // const liked = useSelector(state => state.data.liked)
   const [posts, setPosts] = useState([])
   let headers = {
     Authorization: `Bearer ${token}`
   }
   const newitems = async () => {
     try {
-      setLoader(true)
+
       setPosts([])
       let result = await API.get(`/new-items`, { headers: headers });
       if (result.status === 200) {
@@ -36,8 +36,12 @@ export default function Recent() {
     }
   }
   useEffect(() => {
+    setLoader(true)
     newitems()
   }, [location])
+  // useEffect(() => {
+  //   newitems()
+  // }, [liked])
 
   useEffect(() => {
     newitems();
@@ -83,11 +87,11 @@ export default function Recent() {
                 <div key={index} className="fav-card">
                   <Link to={`/view/${item._id}`} className='detail-page-link' style={{ textDecoration: 'none' }}></Link>
                   <div className='fav-img-box'>
-                    <div onClick={e => Like(index, item.seller_id, item._id)} className={item.liked ? "recent-fav fav-heart like" : "recent-fav fav-heart"}><AiIcons.AiFillHeart /></div>
+                    <div onClick={() => Like(index, item.seller_id, item._id)} className={item.liked ? "recent-fav fav-heart like" : "recent-fav fav-heart"}><AiIcons.AiFillHeart /></div>
                     <img className="favImg" src={item.i_image} alt="food" />
                   </div>
                   <div className="card-content py-3 px-2">
-                    <Fade up>
+                    <Fade >
                       <div className="d-flex flex-column">
                         <h4>{item.item_name}</h4>
                         <span className="d-flex flex-row  align-items-center justify-content-between"><p>{item.category}</p>  <p className="d-flex align-items-center km">

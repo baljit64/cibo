@@ -188,9 +188,9 @@ function DesktopProfile() {
                 <div className='px-3 pt-3'>
                   <span onClick={() => setModalShow(true)} className='w-100 change-password-btn'>Change Password <BsIcons.BsArrowRight className='animated-profile-arrow' /></span>
                 </div>
-                <div className=' px-3 pt-3 '>
+                {/* <div className=' px-3 pt-3 '>
                   <button className='w-100 deactivate-account-btn'>Deactivate Account <BsIcons.BsArrowRight className='animated-profile-arrow' /></button>
-                </div>
+                </div> */}
               </Fade>
             </div>
 
@@ -240,9 +240,9 @@ function DesktopProfile() {
                 <div className=' px-3 pt-3 '>
                   <span onClick={() => setModalShow(true)} className='w-100 change-password-btn'>ChangePassword <BsIcons.BsArrowRight className='animated-profile-arrow' /></span>
                 </div>
-                <div className=' px-3 pt-3 '>
+                {/* <div className=' px-3 pt-3 '>
                   <button className='w-100 deactivate-account-btn'>Deactivate Account <BsIcons.BsArrowRight className='animated-profile-arrow' /></button>
-                </div>
+                </div> */}
               </div>
             </Fade>
           </form>

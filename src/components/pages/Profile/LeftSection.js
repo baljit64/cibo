@@ -45,7 +45,7 @@ function LeftSection() {
           <NavLink to='/profile/wallet' className="account-Options" activeClassName='active-left-section' ><span><IoIcons.IoWalletOutline className='profile-list-icons' /> Payment Setting </span><BiIcons.BiChevronRight className='list-arrow' /></NavLink>
           <Link className='d-md-none d-block' to='/favorites'><li className='account-Options'><span><AiIcons.AiOutlineHeart className='profile-list-icons' /> Favorites </span><BiIcons.BiChevronRight className='list-arrow' /></li></Link>
           <NavLink to='/profile/rewards' className="account-Options" activeClassName='active-left-section' > <span><BiIcons.BiTrophy className='profile-list-icons' /> Rewards </span><BiIcons.BiChevronRight className='list-arrow' /></NavLink>
-          <NavLink to='/help' className="account-Options" activeClassName='active-left-section'><span><BiIcons.BiTrophy className='profile-list-icons' /> Help </span><BiIcons.BiChevronRight className='list-arrow' /></NavLink>
+          <li className="account-Options"><span><BiIcons.BiTrophy className='profile-list-icons' /> Help </span><BiIcons.BiChevronRight className='list-arrow' /></li>
           <NavLink to='/profile/setting' className="account-Options" activeClassName='active-left-section' ><span><FiIcons.FiSettings className='profile-list-icons' /> Account Setting </span><BiIcons.BiChevronRight className='list-arrow' /></NavLink>
         </Fade>
       </div>
