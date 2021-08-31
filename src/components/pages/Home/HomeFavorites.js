@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from "react";
 import Fade from 'react-reveal/Fade';
-import Slide from 'react-reveal/Zoom';
 import Slider from "react-slick";
 import * as AiIcons from 'react-icons/ai'
 import * as GoIcons from 'react-icons/go'
@@ -60,7 +59,7 @@ export default function HomeFavorites() {
   }
   useEffect(() => {
     callApi();
-  }, [])
+  }, [callApi])
 
   useEffect(() => {
     setLoader(true)
@@ -104,9 +103,23 @@ export default function HomeFavorites() {
         breakpoint: 767,
         settings: {
           speed: 200,
-          slidesToShow: 1,
+          slidesToShow: 2,
           className: "center",
           centerPadding: "20px",
+          centerMode: true,
+          infinite: true,
+          slidesToScroll: 1,
+          nextArrow: false,
+          prevArrow: false
+        }
+      },
+      {
+        breakpoint: 540,
+        settings: {
+          speed: 200,
+          slidesToShow: 1,
+          className: "center",
+          centerPadding: "10px",
           centerMode: true,
           infinite: true,
           slidesToScroll: 1,

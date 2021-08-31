@@ -3,12 +3,15 @@ import { SET_LIKE, LOGOUT, SET_KEYWORD, EDIT_ITEM } from '../Constants'
 const initialState = {
   liked: 0,
   keyword: null,
-  item: null
+  item: null,
+  orderDetail: null
 }
 
 
 export default function data(state = initialState, action) {
+
   switch (action.type) {
+
     case SET_LIKE:
       return {
         ...state,
@@ -23,6 +26,16 @@ export default function data(state = initialState, action) {
       return {
         ...state,
         item: action.payload
+      }
+    case 'VIEW_ORDER':
+      return {
+        ...state,
+        orderDetail: action.payload
+      }
+    case 'CHANGE_SELLER_STATUS':
+      return {
+        ...state,
+        orderDetail: { ...state.orderDetail, seller_status: action.payload.seller_status }
       }
     case LOGOUT:
       return initialState

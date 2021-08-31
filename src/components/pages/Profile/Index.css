@@ -720,6 +720,7 @@ input[type=number] {
   padding: 5px 5px;
   border: 1px solid #FA4A0C;
   border-radius: 5px;
+  cursor: pointer;
 
 }
 
@@ -734,9 +735,7 @@ input[type=number] {
 
 /* order form ends here  */
 
-
 /* rewrds section */
-
 
 /* rewards section ends here */
 .reward-header {

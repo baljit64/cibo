@@ -43,7 +43,7 @@ function Cart() {
     viewCart();
   }, [])
 
-  const [delivery_time, setDelivery_time] = useState('standard')
+
   const deliveryTime = (index) => {
     let x = document.querySelectorAll('.delivery-time-btn');
     x[index === 1 ? 1 : 0].classList.remove('priority')
@@ -63,8 +63,7 @@ function Cart() {
 
     }
   }
-  const proceedTopPay = () => {
-  }
+
   const removetoCart = async (item_id) => {
     try {
       let result = await API.delete(`/delete_addToCart/${item_id}`, { headers: headers });
@@ -78,7 +77,7 @@ function Cart() {
       }
     }
   }
-  const [modalShow, setModalShow] = useState(false);
+
   if (loader) {
     return (
       <Loader />
@@ -99,7 +98,7 @@ function Cart() {
                     <div key={index}>
                       <Fade left>
                         <div className='cart-item d-flex flex-row'>
-                          <div className='cart-img'><img src={item.i_image} />
+                          <div className='cart-img'><img src={item.i_image} alt='' />
                           </div>
                           <div className='cart-content pt-1  d-flex flex-column '>
                             <span className='cart-item-name pb-1'>{item.i_name}</span>

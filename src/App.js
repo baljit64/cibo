@@ -1,4 +1,5 @@
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Index from './components/pages/Auth/Login/Index';
 import Location from './components/pages/Location/Location';
 import Profile from './components/pages/Profile/Index'
@@ -16,6 +17,7 @@ import SellerHome from './components/pages/SellerHome/SellerHome';
 import PublicSeller from './components/pages/SellerHome/PublicSeller';
 import Pay from './components/pages/Cart/Pay';
 import Search from './components/pages/Search/Search';
+import ViewSellerOrders from './components/pages/Cart/ViewSellerOrders';
 
 
 function App() {
@@ -36,6 +38,7 @@ function App() {
             <Route exact path="/orders" component={Orders} />
             <Route exact path="/search" component={Search} />
             <Route exact path="/order/:id" component={ViewOrder} />
+            <Route exact path='/seller/orders/view' component={ViewSellerOrders} />
             <Route path="/seller" component={SellerHome} />
             <Route path="/publicseller/:id" component={PublicSeller} />
             <Route path="/profile" component={Profile} />

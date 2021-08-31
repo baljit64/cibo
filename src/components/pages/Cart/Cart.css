@@ -177,7 +177,7 @@
 }
 
 .delivery-address {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 400;
   color: #3E3E3E;
   line-height: 25px;
@@ -484,6 +484,44 @@
 }
 
 /* end of modal */
+/* seller order view */
+.orderSellerimg {
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  outline: none;
+
+}
+
+.orderSellerimg img {
+  height: 100%;
+  width: 100%;
+}
+
+.user-name-on-order {
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  line-height: 22px;
+  padding-top: 5px;
+}
+
+.seller-order-type {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.seller-order-value {
+  font-size: 15px;
+  padding: 3px 10px;
+  color: rgb(11, 112, 11);
+  /* color: #FA4A0C; */
+  font-weight: 500;
+}
+
+/* seller order view end */
 @media only screen and (max-width:767px) {
   .cart-wrap {
     flex-direction: column;
@@ -557,14 +595,7 @@
     height: 30px;
   }
 
-  .delivery-address {
-    font-size: 15px;
-    line-height: 20px;
-  }
-
   .add-notes input {
-
     height: 40px;
-
   }
 }

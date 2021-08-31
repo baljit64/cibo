@@ -32,7 +32,7 @@ export default function PublicItems(props) {
   useEffect(() => {
 
     ApiCall()
-  }, [])
+  }, [ApiCall])
   if (loading) {
     return (
       <Loader />

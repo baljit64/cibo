@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Fade from 'react-reveal'
 import API from '../../Services/Api'
 import Loader from '../Loaders/Spinner'
+import { useHistory } from 'react-router-dom'
 function SellerOrders() {
+  const history = useHistory();
+  const dispatch = useDispatch()
   const [orderList, setOrderList] = useState([])
   const token = useSelector(state => state.authReducer.token)
   let headers = {
@@ -27,15 +30,12 @@ function SellerOrders() {
   }
   useEffect(() => {
     ApiCall()
-  }, [])
-
+  }, [ApiCall])
   const acceptOrder = async (order_id) => {
-
     let data = {
       order_id, status: "accept"
     }
     try {
-
       let result = await API.post('/show_order_status', data, { headers: headers })
       if (result.status === 200) {
         ApiCall()
@@ -48,12 +48,10 @@ function SellerOrders() {
     }
   }
   const cancelOrder = async (order_id) => {
-
     let data = {
       order_id, status: "reject"
     }
     try {
-
       let result = await API.post('/show_order_status', data, { headers: headers })
       if (result.status === 200) {
         ApiCall()
@@ -66,12 +64,10 @@ function SellerOrders() {
     }
   }
   const submitDelivery = async (order_id) => {
-
     let data = {
       order_id, status: "submit"
     }
     try {
-
       let result = await API.post('/show_order_status', data, { headers: headers })
       if (result.status === 200) {
         ApiCall()
@@ -82,6 +78,10 @@ function SellerOrders() {
         console.log(e.response.data)
       }
     }
+  }
+  const viewOrder = (item) => {
+    dispatch({ type: 'VIEW_ORDER', payload: item })
+    history.push("/seller/orders/view")
   }
   if (loading) {
     return (
@@ -99,19 +99,20 @@ function SellerOrders() {
           <div className='order--body d-flex flex-column'>
             {/* req order */}
             {
-              orderList && orderList.map((element) =>
+              orderList && orderList.map((element, i) =>
                 element.seller_status === 'request' ?
-                  <Fade up>
-                    <div className='reuested-orders px-2'>
-                      <div className='req-order-details d-flex flex-row justify-content-between'>
 
+                  <div key={i} className='reuested-orders my-1 px-2'>
+                    <Fade up>
+                      <div className='req-order-details d-flex flex-row justify-content-between'>
                         <div className='soib'>
                           <img alt='' src={element.all_item[0].item_image} />
                         </div>
-                        <div className='req-order-user-info d-flex flex-column'>
+                        <div className='pt-2 req-order-user-info d-flex flex-column'>
                           <span className='req-item-name'>{element.all_item[0].item_name}</span>
                           <span className='req-item-quantity'>{element.all_item[0].quantity}x</span>
                           <span className='order-type'>{element.order_type}</span>
+                          <span onClick={() => viewOrder(element)} className='view-order'>View Detail</span>
                         </div>
                       </div>
                       <hr className='text-muted' />
@@ -121,12 +122,13 @@ function SellerOrders() {
                           <span className='order-amount'>${element.orderAmount}</span>
                         </div>
                         <div className='d-flex flex-row' >
-                          <span onClick={e => acceptOrder(element._id)} className='accept-order'>Accept</span>
-                          <span onClick={e => cancelOrder(element._id)} className='reject-order'>Reject</span>
+                          <span onClick={() => acceptOrder(element._id)} className='accept-order'>Accept</span>
+                          <span onClick={() => cancelOrder(element._id)} className='reject-order'>Reject</span>
                         </div>
                       </div>
-                    </div>
-                  </Fade>
+                    </Fade>
+                  </div>
+
                   : ''
               )
             }
@@ -134,20 +136,21 @@ function SellerOrders() {
             {/* accepted order */}
             <div className='order--header'>Order OnProgress</div>
             {
-              orderList && orderList.map((element) =>
+              orderList && orderList.map((element, i) =>
                 element.seller_status === 'pending' ?
 
-                  <Fade up>
-                    <div className='reuested-orders px-2'>
+                  <div key={i} className='reuested-orders px-2'>
+                    <Fade up>
                       <div className='req-order-details w-100 d-flex flex-row justify-content-between'>
 
                         <div className='soib'>
                           <img alt='' src={element.all_item[0].item_image} />
                         </div>
-                        <div className='req-order-user-info d-flex flex-column'>
+                        <div className='pt-2 req-order-user-info d-flex flex-column'>
                           <span className='req-item-name'>{element.all_item[0].item_name}</span>
                           <span className='req-item-quantity'>{element.all_item[0].quantity}x</span>
                           <span className='order-type'>{element.order_type}</span>
+                          <span onClick={() => viewOrder(element)} className='view-order'>View Detail</span>
                         </div>
                       </div>
                       <hr className='text-muted' />
@@ -158,29 +161,30 @@ function SellerOrders() {
                         </div>
                         <div className='d-flex flex-row' >
                           {/* <span onClick={e => acceptOrder(element._id)} className='accept-order'>Accept</span> */}
-                          <span onClick={e => submitDelivery(element._id)} className='submit-order'>{element.order_type === 'delivery' ? 'Submit Delivery Order' : 'Submit Pickup Order'}</span>
+                          <span onClick={() => submitDelivery(element._id)} className='submit-order'>{element.order_type === 'delivery' ? 'Submit Delivery Order' : 'Submit Pickup Order'}</span>
                         </div>
                       </div>
-                    </div></Fade>
-
+                    </Fade>
+                  </div>
                   : ''
               )
             }
             <div className='order--header'>Order Completed</div>
             {
-              orderList && orderList.map((element, index) =>
+              orderList && orderList.map((element, i) =>
                 element.seller_status === 'completed' ?
 
-                  <Fade up>
-                    <div className='reuested-orders px-2'>
+                  <div key={i} className='reuested-orders mb-2 px-2'>
+                    <Fade up>
                       <div className='req-order-details w-100 d-flex flex-row justify-content-between'>
                         <div className='soib'>
                           <img alt='' src={element.all_item[0].item_image} />
                         </div>
-                        <div className='req-order-user-info d-flex flex-column'>
+                        <div className='req-order-user-info d-flex pt-2 flex-column'>
                           <span className='req-item-name'>{element.all_item[0].item_name}</span>
                           <span className='req-item-quantity'>{element.all_item[0].quantity}x</span>
                           <span className='order-type'>{element.order_type}</span>
+                          <span onClick={() => viewOrder(element)} className='view-order'>View Detail</span>
                         </div>
                       </div>
                       <hr className='text-muted' />
@@ -194,17 +198,15 @@ function SellerOrders() {
                           <span className='completed-order'>Completed</span>
                         </div>
                       </div>
-                    </div>
-                  </Fade>
+                    </Fade>
+                  </div>
 
                   : ''
               )
             }
           </div>
-
         </div>
       </div>
-
     </div>
   )
 }

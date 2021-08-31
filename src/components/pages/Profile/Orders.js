@@ -31,12 +31,11 @@ function Orders() {
     }
   }
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   useEffect(() => {
     apiCall()
-  }, [])
+  }, [apiCall])
   const [seller_id, setSeller_id] = useState(null)
   const [order_id, setOrder_id] = useState(null)
   const [message, setMessage] = useState(null)
@@ -46,10 +45,7 @@ function Orders() {
     handleShow()
     setSeller_id(id1)
     setOrder_id(id2)
-
-
   }
-
   const postReview = async () => {
     let data = {
       seller_id, order_id, message, star
@@ -63,7 +59,6 @@ function Orders() {
         setStar(0)
         setMessage('')
       }
-
     }
     catch (e) {
       if (e.response) {
@@ -73,7 +68,23 @@ function Orders() {
       }
     }
   }
-
+  const cancelOrder = async (id) => {
+    let data = {
+      order_id: id
+    }
+    try {
+      setEror('')
+      let result = await API.post('/cancel_order_for_user', data, { headers: headers })
+      if (result.status === 200) {
+        apiCall()
+      }
+    }
+    catch (e) {
+      if (e.response) {
+        console.log(e.response.data)
+      }
+    }
+  }
   if (loading) {
     return (
       <Loader />
@@ -232,7 +243,7 @@ function Orders() {
                     </div>
                     <div className='d-flex flex-row'>
                       {
-                        item.order_status === 'pending' ? <span className='help-btn'>cancel</span> : ''
+                        item.order_status === 'pending' ? <span onClick={() => cancelOrder(item._id)} className='help-btn'>cancel</span> : ''
                       }
                       {
                         item.order_status === 'track' ? <span className='help-btn'>Track</span> : ''

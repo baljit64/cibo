@@ -29,7 +29,7 @@ function PublicReviews(props) {
   }
   useEffect(() => {
     ApiCall()
-  }, [])
+  }, [ApiCall])
   let oneStar = (
     <><AiIcons.AiFillStar />
       <AiIcons.AiOutlineStar />

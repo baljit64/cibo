@@ -316,6 +316,18 @@
   display: flex;
 }
 
+.view-order {
+  color: #FA4A0C;
+  font-size: 13px;
+  padding-top: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* seller order detail page */
+
+
+/* end of seller order detail page */
 /* mobile seller page links */
 .mobile-seller-nav-links a {
   color: #454545;

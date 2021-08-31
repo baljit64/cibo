@@ -17,30 +17,12 @@ function Search() {
   }
   const [data, setData] = useState([])
   const [keyword, setKeyword] = useState(word)
-  // const Like = async (index, seller_id, item_id) => {
-  //   let cls = document.getElementsByClassName('recent-fav')[index];
-  //   let like_status = !(cls.classList.contains('like'))
-  //   let data = {
-  //     seller_id, item_id, like_status
-  //   }
-  //   cls.classList.toggle('like')
-  //   try {
-  //     let res = await API.post('/favorite', data, { headers: headers });
-  //   }
-  //   catch (e) {
-  //     if (e.response) {
-  //       console.log(e.response.data)
-  //     }
-  //   }
-  // }
+
   const ApiCall = async () => {
     try {
       let result = await API.get(`/search/${keyword}`, { headers: headers })
-
       if (result.status === 200) {
-        console.log(result.data.data)
         setData(result.data.data)
-
       }
     }
     catch (e) {
@@ -49,12 +31,10 @@ function Search() {
       }
     }
   }
-
   useEffect(() => {
     if (keyword === '') {
       return false
     }
-
     ApiCall()
   }, [keyword])
 
@@ -63,14 +43,14 @@ function Search() {
       return false
     }
     ApiCall()
-  }, [])
+  }, [ApiCall])
   const InputValue = e => {
     setKeyword(e)
-    dispatch({ type: 'SET_KEYWORD', payload: e })
+    dispatch({ type: SET_KEYWORD, payload: e })
   }
   const cross = () => {
     setKeyword('')
-    dispatch({ type: 'SET_KEYWORD', payload: '' })
+    dispatch({ type: SET_KEYWORD, payload: '' })
     setData([])
   }
   return (

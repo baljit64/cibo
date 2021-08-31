@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+// import { composeWithDevTools } from 'redux-devtools-extension';
 
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom'

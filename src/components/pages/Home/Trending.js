@@ -99,11 +99,25 @@ export default function Trending() {
         breakpoint: 767,
         settings: {
           speed: 200,
-          slidesToShow: 1,
+          slidesToShow: 2,
           className: "center",
           centerMode: true,
           infinite: true,
           centerPadding: "20px",
+          slidesToScroll: 1,
+          nextArrow: false,
+          prevArrow: false
+        }
+      },
+      {
+        breakpoint: 540,
+        settings: {
+          speed: 200,
+          slidesToShow: 1,
+          className: "center",
+          centerMode: true,
+          infinite: true,
+          centerPadding: "10px",
           slidesToScroll: 1,
           nextArrow: false,
           prevArrow: false

@@ -6,10 +6,12 @@ import AddItems from './AddItems'
 import Blogs from '../Blogs/Blogs'
 import Reviews from './Reviews'
 import EditItem from './EditItem'
+
 function SwitchPages() {
   return (
     <div>
       <Switch>
+
         <Route exact path='/seller/orders' component={SellerOrders} />
         <Route exact path='/seller/items' component={Items} />
         <Route exact path='/seller/items/additems' component={AddItems} />

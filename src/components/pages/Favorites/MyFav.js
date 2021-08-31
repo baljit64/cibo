@@ -18,10 +18,7 @@ function MyFav() {
   const [loader, setLoader] = useState(true)
   const [data, setData] = useState([])
   const [total, setTotal] = useState(0)
-
-
   const callApi = async () => {
-
     try {
       setData([])
       setLoader(true)
@@ -41,8 +38,7 @@ function MyFav() {
   }
   useEffect(() => {
     callApi();
-  }, [])
-
+  }, [callApi])
   useEffect(() => {
     callApi();
   }, [location])
@@ -53,9 +49,7 @@ function MyFav() {
     if (total === 0) {
       callApi();
     }
-
   }, [total])
-
   // removing from likes{
   const Like = async (index, seller_id, item_id) => {
     let cls = document.getElementsByClassName('fav-card')[index];
@@ -82,7 +76,6 @@ function MyFav() {
   return (
     <>
       <div className='container'>
-
         <div className='fav-grid-header'>
           Favorites
         </div>
@@ -111,7 +104,6 @@ function MyFav() {
                 )
                 : ''
             }
-
           </div>
         </div>
         {data.length === 0 ?

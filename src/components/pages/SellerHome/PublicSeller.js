@@ -9,26 +9,18 @@ import API from '../../Services/Api'
 import Fade from 'react-reveal'
 import Loader from '../Loaders/Spinner'
 function SellerHome(props) {
-
   const token = useSelector(state => state.authReducer.token)
-
-
   let [data, setData] = useState([])
   let [loading, setLoading] = useState(true)
-
   let headers = {
     Authorization: `Bearer ${token}`
   }
-
   const ApiCAll = async () => {
-
     try {
-
       let result = await API.get(`/fetch_seller/${props.match.params.id}`, { headers: headers })
       if (result.status === 200) {
         setData(result.data.data)
         setLoading(false)
-
       }
     }
     catch (e) {
@@ -40,18 +32,16 @@ function SellerHome(props) {
   }
   useEffect(() => {
     ApiCAll()
-  }, [])
+  }, [ApiCAll])
   if (loading) {
     return (
       <Loader />
     )
   }
 
-
   return (
     <div className='container'>
       <div className='seller-home-wrap'>
-
         <div className='seller-home-header bg-light px-2 pb-4 mb-2'>
           <Fade up>
             <div className='seller-left-section'>
@@ -66,10 +56,7 @@ function SellerHome(props) {
               </div>
             </div>
           </Fade>
-
         </div>
-
-
         <div className='seller-body'>
           <Fade up>
             <div className='seller-body-left d-none d-md-block'>

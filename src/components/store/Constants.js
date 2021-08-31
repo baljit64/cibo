@@ -1,5 +1,5 @@
 
-
+// import { useDispatch } from "react-redux"
 export const SET_TOKEN = "SET_TOKEN"
 export const SET_USER_DETAIL = "SET_USER_DETAIL"
 export const VERIFY_SELLER = "VERIFY_SELLER"
@@ -16,3 +16,7 @@ export const SET_SELLER_MODE_DELIVERY = 'SET_SELLER_MODE_DELIVERY'
 export const SET_LIKE = 'SET_LIKE'
 export const SET_KEYWORD = 'SET_KEYWORD'
 export const EDIT_ITEM = 'EDIT_ITEM'
+
+
+
+// export const 
