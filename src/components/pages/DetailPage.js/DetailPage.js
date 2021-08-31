@@ -75,7 +75,6 @@ function DetailPage(props) {
     let cartData = {
       item_id: data._id, quantity, order_type: !mode ? "delivery" : "pickup_only", seller_id: data.seller_id, special_instruction
     }
-
     try {
       setProcessing(true)
       let result = await API.post('/addToCart', cartData, { headers: headers })
@@ -83,7 +82,6 @@ function DetailPage(props) {
         setProcessing(false)
         setMsg("SuccessFully Added to cart..")
         setAdded(true)
-
       }
     }
     catch (e) {

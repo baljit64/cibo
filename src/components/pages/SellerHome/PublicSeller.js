@@ -32,7 +32,7 @@ function SellerHome(props) {
   }
   useEffect(() => {
     ApiCAll()
-  }, [ApiCAll])
+  }, [])
   if (loading) {
     return (
       <Loader />

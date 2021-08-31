@@ -35,7 +35,7 @@ function Orders() {
   const handleShow = () => setShow(true);
   useEffect(() => {
     apiCall()
-  }, [apiCall])
+  }, [])
   const [seller_id, setSeller_id] = useState(null)
   const [order_id, setOrder_id] = useState(null)
   const [message, setMessage] = useState(null)

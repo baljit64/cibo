@@ -160,14 +160,13 @@ function SellerHome() {
   useEffect(() => {
     viewSchedule()
     viewDeliveryOption()
-  }, [viewSchedule, viewDeliveryOption])
+  }, [])
 
   const updateSchedule = () => {
     if (start === null || end === null) {
       return false
     }
     else {
-
       scheduleApi()
     }
   }

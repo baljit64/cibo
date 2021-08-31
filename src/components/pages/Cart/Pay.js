@@ -18,7 +18,6 @@ export default function Pay(props) {
   const token = useSelector(state => state.authReducer.token)
   const amount = useSelector(state => state.getLocation.amount)
   const delivery_time = useSelector(state => state.getLocation.delivery_time)
-
   const [payment_method, setPayment_method] = useState(null);
   const [msg, setMsg] = useState('')
   const [paymentMsg, setPaymentMsg] = useState('')
@@ -46,7 +45,6 @@ export default function Pay(props) {
     setPaying(true)
     try {
       let result = await API.post('/add_to_order', data, { headers: headers })
-
       if (result.status === 200) {
         setPaymentMsg('Your Order placed Successfully, wait to seller response')
         setPaying(false)
@@ -68,9 +66,7 @@ export default function Pay(props) {
     }
     else {
       ApiCall()
-
     }
-
   }
   const settings = {
     speed: 200,

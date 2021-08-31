@@ -59,7 +59,7 @@ export default function HomeFavorites() {
   }
   useEffect(() => {
     callApi();
-  }, [callApi])
+  }, [])
 
   useEffect(() => {
     setLoader(true)

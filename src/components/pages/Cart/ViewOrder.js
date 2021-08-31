@@ -19,7 +19,6 @@ export default function ViewOrder(props) {
   const ApiCall = async () => {
     try {
       let result = await API.get(`/view_order/${props.match.params.id}`, { headers: headers })
-
       if (result.status === 200) {
         setData(result.data.data[0])
         setItems(result.data.data[0].all_item)

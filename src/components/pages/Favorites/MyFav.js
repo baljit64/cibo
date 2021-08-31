@@ -38,7 +38,7 @@ function MyFav() {
   }
   useEffect(() => {
     callApi();
-  }, [callApi])
+  }, [])
   useEffect(() => {
     callApi();
   }, [location])

@@ -29,7 +29,7 @@ function Reviews() {
   }
   useEffect(() => {
     ApiCall()
-  }, [ApiCall])
+  }, [])
   let oneStar = (
     <><AiIcons.AiFillStar />
       <AiIcons.AiOutlineStar />

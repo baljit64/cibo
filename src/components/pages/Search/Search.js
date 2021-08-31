@@ -43,7 +43,7 @@ function Search() {
       return false
     }
     ApiCall()
-  }, [ApiCall])
+  }, [])
   const InputValue = e => {
     setKeyword(e)
     dispatch({ type: SET_KEYWORD, payload: e })

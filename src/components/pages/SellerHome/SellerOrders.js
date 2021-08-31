@@ -30,7 +30,7 @@ function SellerOrders() {
   }
   useEffect(() => {
     ApiCall()
-  }, [ApiCall])
+  }, [])
   const acceptOrder = async (order_id) => {
     let data = {
       order_id, status: "accept"

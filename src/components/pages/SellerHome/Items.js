@@ -33,7 +33,7 @@ function Items() {
   }
   useEffect(() => {
     ApiCall()
-  }, [ApiCall])
+  }, [])
   const DelItem = async (id) => {
     let d = {
       operation: "delete",

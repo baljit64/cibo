@@ -62,8 +62,6 @@ function DesktopProfile() {
         if (e.response) {
           setUpdatingData(false)
           setErrorMsg(e.response.data.message)
-
-
         }
       }
     }

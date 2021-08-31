@@ -50,7 +50,6 @@ export default function ViewSellerOrders() {
     }
   }
   const submitOrder = async (order_id) => {
-
     let data = {
       order_id, status: "submit"
     }
