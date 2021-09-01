@@ -4,31 +4,33 @@ import API from '../../Services/Api'
 import * as AiIcons from 'react-icons/ai'
 import Loader from '../Loaders/Spinner'
 import Fade from 'react-reveal/Fade'
+import { getMethod } from '../../Services/Apicall'
 function PublicReviews(props) {
+
+
   const token = useSelector(state => state.authReducer.token)
   let headers = {
     Authorization: `Bearer ${token}`
   }
   const [data, setData] = useState([])
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
-  const ApiCall = async () => {
-    try {
-      let result = await API.get(`/get-reviews/${props.match.params.id}`, { headers: headers })
-
-      if (result.status === 200) {
-        setData(result.data.data)
-        setLoading(false)
-      }
+  const paths = {
+    GET_REVIEW: `/get-reviews/${props.match.params.id}`
+  }
+  const apiCall = async () => {
+    const result = await getMethod(paths.GET_REVIEW, headers)
+    if (result.status === 200) {
+      setData(result.data.data)
+      setLoading(false)
     }
-    catch (e) {
-      if (e.response) {
-        setLoading(false)
-        console.log(e.response.data)
-      }
+    else {
+      setError(result)
+      setLoading(false)
     }
   }
   useEffect(() => {
-    ApiCall()
+    apiCall()
   }, [])
   let oneStar = (
     <><AiIcons.AiFillStar />
@@ -90,7 +92,6 @@ function PublicReviews(props) {
               <div key={i} className='review-card my-1 '>
                 <Fade right>
                   <div className='review-user-img'><img src={item.user_image} alt='' /> </div>
-
                   <div className='review-content d-flex flex-column'>
                     <span className='review-name'>{item.user_name}</span>
                     <span className='review-stars d-flex flex-row'>{

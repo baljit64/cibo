@@ -3,30 +3,28 @@ import { Fade } from 'react-reveal';
 import './Styles.css'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import API from '../../Services/Api'
+import { getMethod } from '../../Services/Apicall'
 import Loader from '../Loaders/Spinner'
 export default function PublicItems(props) {
   const token = useSelector(state => state.authReducer.token)
   let headers = {
     Authorization: `Bearer ${token}`
   }
-
+  const paths = {
+    SELLER_ITEMS: `/listed-item-of-seller/${props.match.params.id}`
+  }
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
   const [data, setData] = useState([])
   const ApiCall = async () => {
-    try {
-      let result = await API.get(`/listed-item-of-seller/${props.match.params.id}`, { headers: headers })
-
-      if (result.status === 200) {
-        setData(result.data.data)
-        setLoading(false)
-      }
+    const result = await getMethod(paths.SELLER_ITEMS, headers)
+    if (result.status === 200) {
+      setData(result.data.data)
+      setLoading(false)
     }
-    catch (e) {
-      if (e.response) {
-        setLoading(false)
-        console.log(e.response.data)
-      }
+    else {
+      setError(result)
+      setLoading(false)
     }
   }
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Styles.css'
-import { Modal, Button } from 'react-bootstrap'
+
 import { NavLink } from 'react-router-dom'
 import SwitchPages from './SwitchPages'
 import { useSelector, useDispatch } from 'react-redux'
@@ -8,7 +8,10 @@ import * as FcIcons from 'react-icons/fc'
 import * as GoIcons from 'react-icons/go'
 import API from '../../Services/Api'
 import Fade from 'react-reveal'
-
+import { getMethod, postMethod } from '../../Services/Apicall'
+import { sellerDeliveryMode, sellerPickUpMode } from '../../store/Constants'
+import Error from '../Error/Error.js'
+import { confirmAlert } from 'react-confirm-alert';
 function SellerHome() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.authReducer.user)
@@ -20,29 +23,21 @@ function SellerHome() {
   const [pickUp, setPickUp] = useState(pickup_mode)
   const [start, setStart] = useState(null)
   const [end, setEnd] = useState(null)
-  const [msg, setMsg] = useState('')
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
 
+  const [error, setError] = useState('')
   let headers = {
     Authorization: `Bearer ${token}`
   }
   const DeliveryOption = async (d) => {
-
     let option = {
       delivery_option: d
     }
-    try {
-
-      let result = await API.post('/seller', option, { headers: headers })
-      if (result.status === 200) {
-        viewSchedule()
-      }
+    const result = await postMethod('/seller', option, headers)
+    if (result.status === 200) {
+      viewSchedule()
     }
-    catch (e) {
-      if (e.response) {
-        console.log(e.response.data)
-      }
+    else {
+      setError(result)
     }
   }
   useEffect(() => {
@@ -58,54 +53,38 @@ function SellerHome() {
       DeliveryOption(["pickup_only"])
       return
     }
-
   }, [delivery, pickUp])
 
   const ChangeDeliveryMode = (e) => {
     if (!pickup_mode && e === false) {
-      setMsg('To remove this select Another Field')
-      setShow(true)
+      submit('To remove Delivery first select Pickup Mode')
       return false
     }
+    dispatch(sellerDeliveryMode(e))
     setDelivery(e)
-    dispatch({
-      type: 'SET_SELLER_MODE_DELIVERY',
-      payload: e
-    })
+
   }
   const ChangePickUpMode = (e) => {
     if (!delivery_mode && e === false) {
-      setMsg('To remove this select Another Field')
-      setShow(true)
+      submit('To remove Pickup first select Delivery Mode')
       return false
     }
     setPickUp(e)
-    dispatch({
-      type: 'SET_SELLER_MODE_PICKUP',
-      payload: e
-    })
+    dispatch(sellerPickUpMode(e))
   }
-
   let date = new Date()
   const scheduleApi = async () => {
-
     let data = {
       start, end, date
     }
-    try {
-      let result = await API.post('/schedule', data, { headers: headers })
-      if (result.status === 200) {
-        setMsg('Schedule Updated Successfully..')
-        setShow(true)
-      }
+    const result = await postMethod('/schedule', data, headers)
+    if (result.status === 200) {
+      submit('Schedule Successfully  Updated...')
     }
-    catch (e) {
-      if (e.response) {
-        console.log(e.response.data)
-      }
+    else {
+      submit(result)
     }
   }
-
   const viewSchedule = async () => {
     try {
       let result = await API.get('/view_schedule', { headers: headers })
@@ -121,47 +100,43 @@ function SellerHome() {
     }
   }
   const viewDeliveryOption = async () => {
-    try {
-      let result = await API.get('/view_delivery-option', { headers: headers })
-      if (result.status === 200) {
 
-        if (result.data.delivery_option[0] === "delivery" || result.data.delivery_option[1] === "delivery") {
-          dispatch({
-            type: 'SET_SELLER_MODE_DELIVERY',
-            payload: true
-          })
-        }
-        else {
-          dispatch({
-            type: 'SET_SELLER_MODE_DELIVERY',
-            payload: false
-          })
-        }
-        if (result.data.delivery_option[0] === "pickup_only" || result.data.delivery_option[1] === "pickup_only") {
-          dispatch({
-            type: 'SET_SELLER_MODE_PICKUP',
-            payload: true
-          })
-        }
-        else {
-          dispatch({
-            type: 'SET_SELLER_MODE_PICKUP',
-            payload: false
-          })
-        }
+    const result = await getMethod('/view_delivery-option', headers)
+    if (result.status === 200) {
+      if (result.data.delivery_option[0] === "delivery" || result.data.delivery_option[1] === "delivery") {
+        dispatch(sellerDeliveryMode(true))
+      }
+      else {
+        dispatch(sellerDeliveryMode(false))
+      }
+      if (result.data.delivery_option[0] === "pickup_only" || result.data.delivery_option[1] === "pickup_only") {
+        dispatch(sellerPickUpMode(true))
+      }
+      else {
+        dispatch(sellerPickUpMode(false))
       }
     }
-    catch (e) {
-      if (e.response) {
-        console.log(e.response.data)
-      }
+
+    else {
+      setError(result)
     }
   }
   useEffect(() => {
     viewSchedule()
     viewDeliveryOption()
   }, [])
+  const submit = (msg) => {
+    confirmAlert({
+      message: msg,
+      buttons: [
 
+        {
+          label: 'Ok',
+          onClick: () => { }
+        }
+      ]
+    });
+  }
   const updateSchedule = () => {
     if (start === null || end === null) {
       return false
@@ -170,23 +145,14 @@ function SellerHome() {
       scheduleApi()
     }
   }
+  if (error) {
+    return (
+      <Error error={error} />
+    )
+  }
   return (
     <div className='container'>
       <div className='seller-home-wrap'>
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Message</Modal.Title>
-          </Modal.Header>
-          <div className='d-flex align-items-center model-wrap'>
-            <span>{msg}</span>
-          </div>
-          <Modal.Footer>
-
-            <Button variant="primary" onClick={handleClose}>
-              ok
-            </Button>
-          </Modal.Footer>
-        </Modal>
         <div className='seller-home-header seller-headr px-2 bg-light mb-2'>
           <Fade up>
             <div className='seller-left-section'>

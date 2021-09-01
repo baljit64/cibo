@@ -1,0 +1,13 @@
+.error-page-wrap {
+  min-height: calc(100vh - 346px);
+  margin-top: 70px;
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width:767px) {
+  .error-page-wrap {
+
+    margin-bottom: 70px;
+  }
+
+}

@@ -37,7 +37,6 @@ function Pickup() {
   }, [])
   let d = {
     "option": "auto"
-
   }
   const [data, setData] = useState([])
   const ApiCall = async () => {
@@ -139,7 +138,7 @@ function Pickup() {
                   <div key={i} className='seller-card-wrap'>
                     <Link to={`/publicseller/${m.seller_id}/items`}></Link>
                     <div className='seller-card-img'>
-                      <img src={m.seller_image} />
+                      <img src={m.seller_image} alt="" />
                     </div>
                     <div className="card-content px-2">
                       <Fade up>

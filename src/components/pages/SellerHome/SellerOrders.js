@@ -4,6 +4,7 @@ import Fade from 'react-reveal'
 import API from '../../Services/Api'
 import Loader from '../Loaders/Spinner'
 import { useHistory } from 'react-router-dom'
+import { viewOrder } from '../../store/Constants'
 function SellerOrders() {
   const history = useHistory();
   const dispatch = useDispatch()
@@ -79,8 +80,8 @@ function SellerOrders() {
       }
     }
   }
-  const viewOrder = (item) => {
-    dispatch({ type: 'VIEW_ORDER', payload: item })
+  const viewItem = (item) => {
+    dispatch(viewOrder(item))
     history.push("/seller/orders/view")
   }
   if (loading) {
@@ -112,7 +113,7 @@ function SellerOrders() {
                           <span className='req-item-name'>{element.all_item[0].item_name}</span>
                           <span className='req-item-quantity'>{element.all_item[0].quantity}x</span>
                           <span className='order-type'>{element.order_type}</span>
-                          <span onClick={() => viewOrder(element)} className='view-order'>View Detail</span>
+                          <span onClick={() => viewItem(element)} className='view-order'>View Detail</span>
                         </div>
                       </div>
                       <hr className='text-muted' />
@@ -150,7 +151,7 @@ function SellerOrders() {
                           <span className='req-item-name'>{element.all_item[0].item_name}</span>
                           <span className='req-item-quantity'>{element.all_item[0].quantity}x</span>
                           <span className='order-type'>{element.order_type}</span>
-                          <span onClick={() => viewOrder(element)} className='view-order'>View Detail</span>
+                          <span onClick={() => viewItem(element)} className='view-order'>View Detail</span>
                         </div>
                       </div>
                       <hr className='text-muted' />
@@ -184,7 +185,7 @@ function SellerOrders() {
                           <span className='req-item-name'>{element.all_item[0].item_name}</span>
                           <span className='req-item-quantity'>{element.all_item[0].quantity}x</span>
                           <span className='order-type'>{element.order_type}</span>
-                          <span onClick={() => viewOrder(element)} className='view-order'>View Detail</span>
+                          <span onClick={() => viewItem(element)} className='view-order'>View Detail</span>
                         </div>
                       </div>
                       <hr className='text-muted' />

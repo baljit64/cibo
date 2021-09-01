@@ -3,6 +3,7 @@ import API from '../../Services/Api'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router'
 import Fade from 'react-reveal'
+import { changeOrderStatus } from '../../store/Constants'
 export default function ViewSellerOrders() {
   const item = useSelector(state => state.data.orderDetail)
   const history = useHistory()
@@ -12,17 +13,14 @@ export default function ViewSellerOrders() {
     Authorization: `Bearer ${token}`
   }
   const acceptOrder = async (order_id) => {
-
     let data = {
       order_id, status: "accept"
     }
     try {
-
       let result = await API.post('/show_order_status', data, { headers: headers })
       if (result.status === 200) {
         console.log(result)
-        dispatch({ type: 'CHANGE_SELLER_STATUS', payload: { seller_status: 'pending' } })
-
+        dispatch(changeOrderStatus('pending'))
       }
     }
     catch (e) {
@@ -32,7 +30,6 @@ export default function ViewSellerOrders() {
     }
   }
   const cancelOrder = async (order_id) => {
-
     let data = {
       order_id, status: "reject"
     }
@@ -57,8 +54,7 @@ export default function ViewSellerOrders() {
 
       let result = await API.post('/show_order_status', data, { headers: headers })
       if (result.status === 200) {
-        dispatch({ type: 'CHANGE_SELLER_STATUS', payload: { seller_status: 'completed' } })
-
+        dispatch(changeOrderStatus('completed'))
       }
     }
     catch (e) {

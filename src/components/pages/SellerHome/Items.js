@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import { Fade } from 'react-reveal'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, Redirect } from 'react-router-dom'
-import API from '../../Services/Api'
+import { Link, useHistory } from 'react-router-dom'
 import Loader from '../Loaders/Spinner'
 import { Modal, Button } from 'react-bootstrap'
-function Items() {
+import { postMethod, getMethod } from '../../Services/Apicall'
+import { editItem } from '../../store/Constants'
+import { confirmAlert } from 'react-confirm-alert';
 
+import './Styles.css'
+function Items() {
+  const history = useHistory();
   const token = useSelector(state => state.authReducer.token)
   const delivery_mode = useSelector(state => state.getLocation.delivery)
   const pickup_mode = useSelector(state => state.getLocation.pickup_only)
   let headers = {
     Authorization: `Bearer ${token}`
   }
+  const paths = {
+    ITEM_LIST: '/listed-item',
+    DELETE_ITEM: '/items'
+  }
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState([])
+  const [error, setError] = useState('')
   const ApiCall = async () => {
-    try {
-      let result = await API.get('/listed-item', { headers: headers })
-
-      if (result.status === 200) {
-        setData(result.data.data)
-        setLoading(false)
-      }
+    const result = await getMethod(paths.ITEM_LIST, headers)
+    if (result.status === 200) {
+      setData(result.data.data)
+      setLoading(false)
     }
-    catch (e) {
-      if (e.response) {
-        console.log(e.response.data)
-      }
+    else {
+      setError(result)
+      setLoading(false)
     }
   }
   useEffect(() => {
@@ -39,40 +44,45 @@ function Items() {
       operation: "delete",
       item_id: id
     }
-    try {
-      let result = await API.post('/items', d, { headers: headers })
-
-      if (result.status === 200) {
-
-        ApiCall()
-      }
+    const result = await postMethod(paths.DELETE_ITEM, d, headers)
+    if (result.status === 200) {
+      ApiCall()
     }
-    catch (e) {
-      if (e.response) {
-        console.log(e.response.data)
-      }
+    else {
+      setError(result)
     }
   }
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   // edit item function
-  const [editPageOn, setEditPageOn] = useState(false)
-  const EditDetails = (item) => {
-    setEditPageOn(true)
-    dispatch({ type: 'EDIT_ITEM', payload: item })
-  }
 
+  const EditDetails = (item) => {
+    dispatch(editItem(item))
+    history.push("/seller/items/edit")
+  }
+  const submit = (id) => {
+    confirmAlert({
+      message: 'Are you sure to delete this.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => DelItem(id)
+        },
+        {
+          label: 'No',
+          onClick: () => { }
+        }
+      ],
+      overlayClassName: "overlay-custom-class-name"
+    });
+  };
   if (loading) {
     return (
       <Loader />
     )
   }
-  if (editPageOn) {
-    return (
-      <Redirect to="/seller/items/edit" />
-    )
-  }
+
 
   return (
     <div className='w-100'>
@@ -121,7 +131,7 @@ function Items() {
                   <div className='seller-item-price'>${item.price}</div>
                   <div className='seller-items-btns  d-flex flex-row align-items-center'>
                     <button onClick={() => EditDetails(item)} className='edit-item-btn' >Edit</button>
-                    <button onClick={() => DelItem(item._id)} className='delete-item-btn'>Delete</button>
+                    <button onClick={() => submit(item._id)} className='delete-item-btn'>Delete</button>
                   </div>
                 </div>
               </Fade>

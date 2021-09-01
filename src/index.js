@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// import { composeWithDevTools } from 'redux-devtools-extension';
-
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -17,7 +16,7 @@ const persistConfig = {
   storage,
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
-let store = createStore(persistedReducer)
+let store = createStore(persistedReducer, composeWithDevTools())
 let persistor = persistStore(store)
 
 

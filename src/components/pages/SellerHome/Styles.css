@@ -568,8 +568,8 @@
 
 .seller-item-description {
   font-size: 13px;
-  font-weight: 300;
-  color: rgb(32, 32, 32);
+  font-weight: 400;
+  color: rgba(32, 32, 32, 0.719);
   line-height: 16px;
   padding-top: 7px;
   display: -webkit-box;
@@ -724,6 +724,12 @@
   font-size: 12px;
   line-height: 16px;
   color: #292929;
+}
+
+/* alert bg  color*/
+.react-confirm-alert-overlay {
+
+  background-color: #1c181888 !important;
 }
 
 @media only screen and (min-width:768px) {

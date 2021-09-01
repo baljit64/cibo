@@ -16,7 +16,7 @@ function Blogs() {
     try {
       setLoading(true)
       let result = await API.get('/get-blogs', { headers: headers })
-      console.log(result)
+
       if (result.status === 200) {
         setLoading(false)
         setData(result.data.data)

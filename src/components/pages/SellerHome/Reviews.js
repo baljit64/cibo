@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import API from '../../Services/Api'
+// import API from '../../Services/Api'
+import { getReview } from '../../Services/Apicall'
 import * as AiIcons from 'react-icons/ai'
 import Loader from '../Loaders/Spinner'
-
 function Reviews() {
   const token = useSelector(state => state.authReducer.token)
   let headers = {
@@ -11,25 +11,28 @@ function Reviews() {
   }
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-  const ApiCall = async () => {
-    try {
-      let result = await API.get('/get-reviews', { headers: headers })
-
-      if (result.status === 200) {
-        setData(result.data.data)
-        setLoading(false)
-      }
-    }
-    catch (e) {
-      if (e.response) {
-        setLoading(false)
-        console.log(e.response.data)
-      }
-    }
-  }
   useEffect(() => {
-    ApiCall()
+    // const result = getReview(headers)
+    // console.log(result)
+    console.log("hello")
   }, [])
+
+
+  // const ApiCall = async () => {
+  //   try {
+  //     let result = await API.get('/get-reviews', { headers: headers })
+  //     if (result.status === 200) {
+  //       setData(result.data.data)
+  //       setLoading(false)
+  //     }
+  //   }
+  //   catch (e) {
+  //     if (e.response) {
+  //       setLoading(false)
+  //       console.log(e.response.data)
+  //     }
+  //   }
+  // }
   let oneStar = (
     <><AiIcons.AiFillStar />
       <AiIcons.AiOutlineStar />
@@ -89,7 +92,6 @@ function Reviews() {
             data.map((item, i) =>
               <div key={i} className='review-card my-1 '>
                 <div className='review-user-img'><img src={item.user_image} alt='' /> </div>
-
                 <div className='review-content d-flex flex-column'>
                   <span className='review-name'>{item.user_name}</span>
                   <span className='review-stars d-flex flex-row'>{

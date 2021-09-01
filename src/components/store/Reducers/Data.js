@@ -1,5 +1,5 @@
 
-import { SET_LIKE, LOGOUT, SET_KEYWORD, EDIT_ITEM } from '../Constants'
+import { SET_LIKE, LOGOUT, SET_KEYWORD, EDIT_ITEM, VIEW_ORDER, CHANGE_SELLER_STATUS } from '../Constants'
 const initialState = {
   liked: 0,
   keyword: null,
@@ -27,12 +27,12 @@ export default function data(state = initialState, action) {
         ...state,
         item: action.payload
       }
-    case 'VIEW_ORDER':
+    case VIEW_ORDER:
       return {
         ...state,
         orderDetail: action.payload
       }
-    case 'CHANGE_SELLER_STATUS':
+    case CHANGE_SELLER_STATUS:
       return {
         ...state,
         orderDetail: { ...state.orderDetail, seller_status: action.payload.seller_status }

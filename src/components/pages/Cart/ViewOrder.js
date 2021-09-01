@@ -56,7 +56,6 @@ export default function ViewOrder(props) {
       setEror('')
       let result = await API.post('/review', data, { headers: headers })
       if (result.status === 200) {
-        console.log(result)
         ApiCall()
         handleClose()
         setStar(0)
@@ -104,7 +103,6 @@ export default function ViewOrder(props) {
       <AiIcons.AiFillStar />
       <AiIcons.AiFillStar />
       <AiIcons.AiOutlineStar />
-
     </>
   )
   let fiveStar = (
@@ -114,7 +112,6 @@ export default function ViewOrder(props) {
       <AiIcons.AiFillStar />
       <AiIcons.AiFillStar />
       <AiIcons.AiFillStar />
-
     </>
   )
 

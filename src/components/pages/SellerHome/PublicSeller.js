@@ -5,29 +5,29 @@ import PublicSellerRoutes from './PublicSellerRoute'
 import { useSelector } from 'react-redux'
 import * as FcIcons from 'react-icons/fc'
 import * as GoIcons from 'react-icons/go'
-import API from '../../Services/Api'
 import Fade from 'react-reveal'
 import Loader from '../Loaders/Spinner'
+import { getMethod } from '../../Services/Apicall'
 function SellerHome(props) {
   const token = useSelector(state => state.authReducer.token)
   let [data, setData] = useState([])
   let [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
   let headers = {
     Authorization: `Bearer ${token}`
   }
+  const paths = {
+    FETCH_SELLER: `/fetch_seller/${props.match.params.id}`
+  }
   const ApiCAll = async () => {
-    try {
-      let result = await API.get(`/fetch_seller/${props.match.params.id}`, { headers: headers })
-      if (result.status === 200) {
-        setData(result.data.data)
-        setLoading(false)
-      }
+    const result = await getMethod(paths.FETCH_SELLER, headers)
+    if (result.status === 200) {
+      setData(result.data.data)
+      setLoading(false)
     }
-    catch (e) {
-      if (e.response) {
-        setLoading(false)
-        console.log(e.response.data)
-      }
+    else {
+      setError(result)
+      setLoading(false)
     }
   }
   useEffect(() => {

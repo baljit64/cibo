@@ -10,8 +10,9 @@ import Slide from 'react-reveal/Slide';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { useDispatch } from 'react-redux'
-import { SET_TOKEN, VERIFY_SELLER } from '../../../store/Constants'
+import { setToken, verifySeller } from '../../../store/Constants'
 import API from '../../../Services/Api'
+import { postMethod } from '../../../Services/Apicall'
 
 function Login() {
   const dispatch = useDispatch()
@@ -22,7 +23,6 @@ function Login() {
     if (email === '' || password === '') {
       setErrorMsg('Please Fill All fileds')
       return false;
-
     }
     else {
       return true
@@ -41,13 +41,9 @@ function Login() {
         let result = await API.post('/login', loginDetails)
         if (result.status === 200) {
           if (result.data.seller) {
-            dispatch({ type: VERIFY_SELLER, payload: result.data.seller })
+            dispatch(verifySeller(result.data.seller))
+            dispatch(setToken(result.data.token))
           }
-
-          dispatch({
-            type: SET_TOKEN,
-            payload: result.data.token
-          })
         }
       }
       catch (e) {
@@ -57,7 +53,6 @@ function Login() {
       }
     }
   }
-
   const responseFacebook = async (response) => {
     if (response.status) {
       console.log(response.status)
@@ -76,11 +71,6 @@ function Login() {
       catch (e) {
         console.log(e)
       }
-      // console.log(facebookRes)
-      // dispatch({
-      //   type: SET_USER_DETAIL,
-      //   payload: facebookRes
-      // })
     }
   }
   const responseGoogle = async (response) => {
@@ -92,18 +82,16 @@ function Login() {
       google_id: res.googleId
 
     }
-    try {
-      let result = await API.post('/login', googleRes)
-      if (result.status === 200) {
-        dispatch({
-          type: SET_TOKEN,
-          payload: result.data.token
-        })
-      }
+
+    let result = await postMethod('/login', googleRes)
+    if (result.status === 200) {
+      dispatch(setToken(result.data.token))
     }
-    catch (e) {
-      console.log(e)
+    else {
+
     }
+
+
   }
 
   return (
