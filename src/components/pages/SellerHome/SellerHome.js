@@ -86,21 +86,17 @@ function SellerHome() {
     }
   }
   const viewSchedule = async () => {
-    try {
-      let result = await API.get('/view_schedule', { headers: headers })
-      if (result.status === 200) {
-        setStart(result.data.delivery_option.start_time)
-        setEnd(result.data.delivery_option.end_time)
-      }
+    const result = await getMethod('/view_schedule', headers)
+    if (result.status === 200) {
+      setStart(result.data.delivery_option.start_time)
+      setEnd(result.data.delivery_option.end_time)
     }
-    catch (e) {
-      if (e.response) {
-        console.log(e.response.data)
-      }
+    else {
+      setError(result)
     }
+
   }
   const viewDeliveryOption = async () => {
-
     const result = await getMethod('/view_delivery-option', headers)
     if (result.status === 200) {
       if (result.data.delivery_option[0] === "delivery" || result.data.delivery_option[1] === "delivery") {
@@ -116,7 +112,6 @@ function SellerHome() {
         dispatch(sellerPickUpMode(false))
       }
     }
-
     else {
       setError(result)
     }

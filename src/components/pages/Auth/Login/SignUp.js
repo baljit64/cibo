@@ -9,12 +9,11 @@ import * as HiIcons from 'react-icons/hi'
 import * as BiIcons from 'react-icons/bi'
 import * as MdIcons from 'react-icons/md'
 import * as BsIcons from 'react-icons/bs'
-
 import Slide from 'react-reveal/Slide';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import { useDispatch } from 'react-redux'
-import { SET_TOKEN } from '../../../store/Constants'
+import { SET_TOKEN, setToken } from '../../../store/Constants'
 import API from '../../../Services/Api'
 
 
@@ -41,11 +40,7 @@ function SignUp() {
       try {
         let result = await API.post('/user', signupData)
         if (result.status === 200) {
-          console.log(result)
-          dispatch({
-            type: SET_TOKEN,
-            payload: result.data.token
-          })
+          dispatch(setToken(result.data.token))
         }
       }
       catch (e) {
@@ -110,11 +105,6 @@ function SignUp() {
       catch (e) {
         console.log(e)
       }
-      // console.log(facebookRes)
-      // dispatch({
-      //   type: SET_USER_DETAIL,
-      //   payload: facebookRes
-      // })
     }
   }
   const responseGoogle = async (response) => {
@@ -129,10 +119,7 @@ function SignUp() {
     try {
       let result = await API.post('/login', googleRes)
       if (result.status === 200) {
-        dispatch({
-          type: SET_TOKEN,
-          payload: result.data.token
-        })
+        dispatch(setToken(result.data.token))
       }
 
     }
