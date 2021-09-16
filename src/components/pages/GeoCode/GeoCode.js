@@ -4,7 +4,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Geocode from "react-geocode";
 import { SET_ADDRESS } from '../../store/Constants';
-Geocode.setApiKey("AIzaSyBrS5eBzOCobjmCbBtMIheZT3OX3WyneNM");
+Geocode.setApiKey("");
 Geocode.setLanguage("en");
 
 function GeoCode() {
